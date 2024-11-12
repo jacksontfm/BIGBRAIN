@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct Game: View {
+struct GameView: View {
+    
+    let solution: Array<Int> = []
+    
+    
+    
     var body: some View {
-        Text("Game")
+        Text("Go 'Back' to play!")
     }
 }
 
 #Preview {
-    Game()
+    GameView()
 }

@@ -20,12 +20,12 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .foregroundStyle(.tint)
                 
-                NavigationLink(destination: Game()) {
+                NavigationLink(destination: GameView()) {
                     Text("New Game")
                 }
                 .padding()
                 
-                NavigationLink(destination: Records()) {
+                NavigationLink(destination: RecordsView()) {
                     Text("Records")
                 }
             }
