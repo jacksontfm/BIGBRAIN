@@ -20,8 +20,4 @@ class Record {
         self.date = date
         self.turns = turns
     }
-    
-//    var isBirthdayToday: Bool {
-//        Calendar.current.isDateInToday(birthday)
-//    }
 }
