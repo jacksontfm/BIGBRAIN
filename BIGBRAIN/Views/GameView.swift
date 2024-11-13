@@ -15,15 +15,29 @@ struct GameView: View {
             ModalView()
         } else {
             VStack(spacing: 20) {
-                HStack {
-                    MessageView()
-                        .padding(.horizontal, 20)
-                    Spacer()
-                    GiveUpButton()
-                        .padding(.horizontal, 20)
+                VStack {
+                    HStack {
+                        MessageView()
+                            .padding(.leading, 20)
+                        Spacer()
+                        Text("Give up?")
+                        GiveUpButton()
+                            .padding(.trailing, 20)
+                    }
+                    HStack {
+                        Text("You have \(game.turnsRemaining) tries left")
+                            .padding(.leading, 20)
+                        Spacer()
+                    }
                 }
+                RowView()
+                RowView()
+                RowView()
+                RowView()
+                RowView()
                 Spacer()
                 SubmitButton()
+                    .padding()
             }
         }
     }

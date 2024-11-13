@@ -14,14 +14,20 @@ struct SubmitButton: View {
         Button {
             game.submit()
         } label: {
-            Text("MAYBE?")
+            Spacer()
+            Text("Here's my answer!")
                 .font(.system(size: 30))
                 .foregroundStyle(.white)
-                .padding(.horizontal, 15)
-                .padding(.vertical, 15)
+            Spacer()
         }
-        .buttonStyle(.borderedProminent)
-        .font(.title2)
+        .padding()
+        .background{
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.tint)
+                .opacity(0.6)
+                .brightness(-0.4)
+        }
+        .foregroundStyle(.white)
     }
 }
 

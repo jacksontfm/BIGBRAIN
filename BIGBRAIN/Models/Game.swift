@@ -14,21 +14,22 @@ class Game {
     
     var solution = [Peg]()
     var turnCount = 0
+    var turnsRemaining = 5
     var message: Message = .instructions
     
     var gameStart = false
     var gameWon = false
     var modalView = false
-    var dangerMode = false
+    var dangerZone = false
     
-    init(colors: Colors = .hardColors) {
+    init(colors: Colors = .easyColors) {
         self.colors = colors
     }
     
     func submit() {
         //TODO: implement submit
         
-        //Must have complete guess, then increment turnCount
+        //Must have complete guess, then increment turnCount and subtract from turnsRemaining
         
         //Check if input matches solution
         
@@ -57,7 +58,7 @@ class Game {
         
         //else assign new colors to existing solution
         
-        //reset guesses, message, and turn count
+        //reset guesses, message, turn count, and turns remaining
         message = .instructions
         
         //last step, set gameWon and modalView back to false

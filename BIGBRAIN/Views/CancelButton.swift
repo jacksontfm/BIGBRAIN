@@ -14,14 +14,20 @@ struct CancelButton: View {
         Button {
             game.modalToggle()
         } label: {
-            Text("Cancel")
+            Spacer()
+            Text("I'll never give up!")
                 .font(.system(size: 30))
                 .foregroundStyle(.white)
-                .padding(.horizontal, 15)
-                .padding(.vertical, 15)
+            Spacer()
         }
-        .buttonStyle(.borderedProminent)
-        .font(.title2)
+        .padding()
+        .background{
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundStyle(.tint)
+                .opacity(0.6)
+                .brightness(-0.4)
+        }
+        .foregroundStyle(.white)
     }
 }
 

@@ -12,18 +12,25 @@ struct ModalView: View {
     
     var body: some View {
         
-        if (game.gameWon) {
-            Text("You won!")
-        } else {
-            Text("Are you giving up?")
-            CancelButton()
+        VStack(spacing: 30) {
+            if (game.gameWon) {
+                Text("You won!")
+                    .font(.title)
+            } else {
+                Text("Are you giving up?")
+                    .font(.title2)
+                CancelButton()
+            }
+            NewGameButton()
+            HomeButton()
         }
-        NewGameButton()
-        HomeButton()
+        .padding()
     }
 }
 
 #Preview {
-    ModalView()
-        .environment(Game())
+    let game = Game()
+    game.gameWon = false
+    return ModalView()
+        .environment(game)
 }
