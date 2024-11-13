@@ -8,31 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(Game.self) private var game
+    
     var body: some View {
         
-        NavigationStack {
-            
-            VStack {
+        if (!game.gameStart) {
+            NavigationStack {
                 
-                Text("BIGBRAIN")
-                
-                Image(systemName: "brain.filled.head.profile")
-                    .font(.largeTitle)
-                    .foregroundStyle(.tint)
-                
-                NavigationLink(destination: GameView()) {
-                    Text("New Game")
-                }
-                .padding()
-                
-                NavigationLink(destination: RecordsView()) {
-                    Text("Records")
+                VStack {
+                    Text("BIGBRAIN")
+                    
+                    Image(systemName: "brain.filled.head.profile")
+                        .font(.largeTitle)
+                        .foregroundStyle(.tint)
+                    
+                    Button {
+                        game.startNewGame()
+                    } label: {
+                        Text("Start?")
+                    }
+                    .padding()
+                    
+                    NavigationLink(destination: RecordsView()) {
+                        Text("Records")
+                    }
                 }
             }
+            
+        } else {
+            GameView()
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environment(Game())
 }

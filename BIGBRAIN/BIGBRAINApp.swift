@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct BIGBRAINApp: App {
+    @State private var game = Game()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .modelContainer(for: Record.self)
+                .environment(game)
         }
     }
 }

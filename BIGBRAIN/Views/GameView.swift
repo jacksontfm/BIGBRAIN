@@ -7,13 +7,29 @@
 
 import SwiftUI
 
-struct GameView: View {    
+struct GameView: View {
+    @Environment(Game.self) private var game
     
     var body: some View {
-        Text("Go 'Back' to play!")
+        if(game.modalView) {
+            ModalView()
+        } else {
+            VStack(spacing: 20) {
+                HStack {
+                    MessageView()
+                        .padding(.horizontal, 20)
+                    Spacer()
+                    GiveUpButton()
+                        .padding(.horizontal, 20)
+                }
+                Spacer()
+                SubmitButton()
+            }
+        }
     }
 }
 
 #Preview {
     GameView()
+        .environment(Game())
 }

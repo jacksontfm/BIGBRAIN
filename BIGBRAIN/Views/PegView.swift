@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct PegView: View {
+    
+    var peg: Peg
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Circle()
+            .fill(RadialGradient(gradient: Gradient(colors: [peg.displayColor, .white]), center: .center, startRadius: 5, endRadius: 50))
+            .frame(width: 50, height: 50)
     }
 }
 
 #Preview {
-    PegView()
+    let peg = Peg(color: "orange")
+    PegView(peg: peg)
 }

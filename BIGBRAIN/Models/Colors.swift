@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 struct Colors {
     let colors: [String]
@@ -20,30 +21,30 @@ struct Colors {
     }
     
     //Each word corresponds to a color
-    static let icons: [String: String] = [
-        "Red": ".red",
-        "Blue": ".blue",
-        "Green": ".green",
-        "Yellow": ".yellow",
-        "Purple": ".purple",
-        "Orange": ".orange",
+    static let displayedState: [String: Color] = [
+        "red": Color.red,
+        "blue": Color.blue,
+        "green": Color.green,
+        "yellow": Color.yellow,
+        "purple": Color.purple,
+        "orange": Color.orange,
     ]
 }
 
 extension Colors {
     static let hardColors = Colors(colors: [
-        "Red",
-        "Blue",
-        "Green",
-        "Yellow",
-        "Purple",
-        "Orange",
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "orange",
     ])
 
     static let easyColors = Colors(colors: [
-        "Red",
-        "Blue",
-        "Green",
-        "Yellow",
+        "red",
+        "blue",
+        "green",
+        "yellow",
     ])
 }

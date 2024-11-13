@@ -8,7 +8,6 @@
 import Foundation
 
 enum Message: String {
-    case instructions = "Crack the code!"
+    case instructions = "Objective: crack the code!"
     case tryAgain = "Not quite..."
-    case youWin = "You've done it!"
 }

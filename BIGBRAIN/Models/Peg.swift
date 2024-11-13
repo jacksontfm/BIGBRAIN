@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 @Observable
 class Peg: Identifiable {
@@ -15,6 +16,10 @@ class Peg: Identifiable {
     
     init(color: String) {
         self.color = color
+    }
+    
+    var displayColor: Color {
+        Colors.displayedState[color] ?? .black
     }
 }
 

@@ -12,21 +12,64 @@ class Game {
     private let pegCount = 4
     private var colors: Colors
     
+    var solution = [Peg]()
+    var turnCount = 0
+    var message: Message = .instructions
+    
+    var gameStart = false
+    var gameWon = false
+    var modalView = false
+    var dangerMode = false
+    
     init(colors: Colors = .hardColors) {
         self.colors = colors
-        startNewGame()
     }
     
-    //MARK: private implementation
+    func submit() {
+        //TODO: implement submit
+        
+        //Must have complete guess, then increment turnCount
+        
+        //Check if input matches solution
+        
+        //If match, record turn count as final score and display victory modal
+        gameWon = true
+        modalView = true
+        
+        //If lose, change message
+        message = .tryAgain
+        
+        //Return to menu
+    }
+    
     
     //Updates solution with a new set of pegs
-    private func startNewGame() {
+    func startNewGame() {
         //TODO: implement startNewGame
+        
+        if !gameStart {
+            gameStart = true
+        }
+        
         //set newSolution
         
         //if solution is empty, append new pegs to solution
         
         //else assign new colors to existing solution
         
+        //reset guesses, message, and turn count
+        message = .instructions
+        
+        //last step, set gameWon and modalView back to false
+        gameWon = false
+        modalView = false
+    }
+    
+    func quitGame() {
+        gameStart = false
+    }
+    
+    func modalToggle() {
+        modalView.toggle()
     }
 }
