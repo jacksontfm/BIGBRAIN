@@ -25,19 +25,36 @@ struct GameView: View {
                             .padding(.trailing, 20)
                     }
                     HStack {
-                        Text("You have \(game.turnsRemaining) attempts left")
-                            .padding(.leading, 20)
+                        if (game.turnsRemaining == 1) {
+                            Text("This is your last chance!")
+                                .padding(.leading, 20)
+                        } else {
+                            Text("You have \(game.turnsRemaining) attempts left")
+                                .padding(.leading, 20)
+                        }
                         Spacer()
                     }
                 }
                 ZStack {
                     RowView()
-                    GuessView()
+                    Guess1View()
                 }
-                RowView()
-                RowView()
-                RowView()
-                RowView()
+                ZStack {
+                    RowView()
+                    Guess2View()
+                }
+                ZStack {
+                    RowView()
+                    Guess3View()
+                }
+                ZStack {
+                    RowView()
+                    Guess4View()
+                }
+                ZStack {
+                    RowView()
+                    Guess5View()
+                }
                 InputRowView()
                 SubmitButton()
                     .padding(.horizontal)

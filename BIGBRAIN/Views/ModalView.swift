@@ -15,10 +15,13 @@ struct ModalView: View {
         VStack(spacing: 30) {
             if (game.gameWon) {
                 Text("You won!")
+                    .font(.title2)
+            } else if (game.gameLost) {
+                Text("Game Over")
                     .font(.title)
             } else {
                 Text("Are you giving up?")
-                    .font(.title2)
+                    .font(.title)
                 CancelButton()
             }
             NewGameButton()
@@ -30,7 +33,7 @@ struct ModalView: View {
 
 #Preview {
     let game = Game()
-    game.gameWon = false
+    game.gameLost = false
     return ModalView()
         .environment(game)
 }
