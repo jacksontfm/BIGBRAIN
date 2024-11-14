@@ -28,6 +28,7 @@ struct SubmitButton: View {
                 .brightness(-0.4)
         }
         .foregroundStyle(.white)
+        .disabled(game.guess.count < 4)
     }
 }
 

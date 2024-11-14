@@ -12,8 +12,16 @@ class Game {
     private let pegCount = 4
     private var colors: Colors
     
-    var solution = [Peg]()
-    var turnCount = 0
+    var guess = [String]()
+    var solution = [String]()
+    
+    var guess1 = [String]()
+    var guess2 = [String]()
+    var guess3 = [String]()
+    var guess4 = [String]()
+    var guess5 = [String]()
+    
+    var turnCount = 1
     var turnsRemaining = 5
     var message: Message = .instructions
     
@@ -24,6 +32,18 @@ class Game {
     
     init(colors: Colors = .easyColors) {
         self.colors = colors
+    }
+    
+    func addPeg(input: String) {
+        if (guess.count < 4) {
+            guess.append(input)
+        }
+    }
+    
+    func removePeg() {
+        if (!guess.isEmpty) {
+            guess.removeLast()
+        }
     }
     
     func submit() {
@@ -46,7 +66,7 @@ class Game {
     
     //Updates solution with a new set of pegs
     func startNewGame() {
-        //TODO: implement startNewGame
+        //TODO: finish implementing startNewGame
         
         if !gameStart {
             gameStart = true
@@ -58,7 +78,16 @@ class Game {
         
         //else assign new colors to existing solution
         
-        //reset guesses, message, turn count, and turns remaining
+        //reset guesses, turn count, turns remaining, and message
+        guess = [String]()
+        guess1 = [String]()
+        guess2 = [String]()
+        guess3 = [String]()
+        guess4 = [String]()
+        guess5 = [String]()
+        
+        turnCount = 1
+        turnsRemaining = 5
         message = .instructions
         
         //last step, set gameWon and modalView back to false

@@ -15,27 +15,31 @@ struct RowView: View {
     let peg4: Peg? = Optional.none
     
     var body: some View {
-        HStack(spacing: 30) {
+        HStack {
             Image(systemName: "circle.slash")
                 .font(.largeTitle)
                 .foregroundStyle(.tint)
                 .opacity(0.2)
                 .brightness(-0.4)
+                .padding(.leading, 15)
             Image(systemName: "circle.slash")
                 .font(.largeTitle)
                 .foregroundStyle(.tint)
                 .opacity(0.2)
                 .brightness(-0.4)
+                .padding(.leading, 20)
             Image(systemName: "circle.slash")
                 .font(.largeTitle)
                 .foregroundStyle(.tint)
                 .opacity(0.2)
                 .brightness(-0.4)
+                .padding(.leading, 20)
             Image(systemName: "circle.slash")
                 .font(.largeTitle)
                 .foregroundStyle(.tint)
                 .opacity(0.2)
                 .brightness(-0.4)
+                .padding(.leading, 20)
             Spacer()
             HStack {
                 VStack {
