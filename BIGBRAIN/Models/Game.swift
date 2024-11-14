@@ -52,7 +52,6 @@ class Game {
         }
     }
     
-    //Compare guess against solution to generate hint. Randomize hint after generating.
     func gatherHints(guess: [String], solution: [String]) {
         
         //generate an array showing which pegs are in the correct position

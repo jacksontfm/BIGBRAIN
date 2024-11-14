@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Query(sort: \Record.turns) private var records: [Record]
     @Environment(Game.self) private var game
     
     var body: some View {
@@ -44,4 +46,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environment(Game())
+        .modelContainer(for: Record.self, inMemory: true)
 }

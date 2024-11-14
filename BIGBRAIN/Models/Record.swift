@@ -5,8 +5,8 @@
 //  Created by Jackson Merle on 2024/11/12.
 //
 
-import Foundation
 import SwiftData
+import Foundation
 
 @Model
 class Record {

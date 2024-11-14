@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ModalView: View {
     @Environment(Game.self) private var game
+    @Environment(\.modelContext) private var context
+    
+    @State private var newName = ""
+    @State private var newDate = Date.now
+    @State private var saved = false
     
     var body: some View {
         
@@ -21,8 +27,22 @@ struct ModalView: View {
                 } else {
                     Text("You finished in \(game.turnCount) turns!")
                 }
-                //TODO: add functionality to save record
-                //Text("Enter your name to save your record")
+                HStack {
+                    TextField("Enter your name to save your record", text: $newName)
+                        .autocorrectionDisabled()
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(saved)
+                    Button("Save") {
+                        let newRecord = Record(name: newName, date: newDate, turns: game.turnCount)
+                        context.insert(newRecord)
+                        
+                        newName = ""
+                        newDate = .now
+                        saved = true
+                    }
+                    .bold()
+                    .disabled(saved)
+                }
             } else if (game.gameLost) {
                 Text("Game Over")
                     .font(.title)
@@ -41,7 +61,8 @@ struct ModalView: View {
 
 #Preview {
     let game = Game()
-    game.gameLost = true
+    game.gameWon = true
     return ModalView()
         .environment(game)
+        .modelContainer(for: Record.self, inMemory: true)
 }
