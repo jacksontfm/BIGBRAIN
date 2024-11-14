@@ -14,12 +14,12 @@ struct HintPegView: View {
     var body: some View {
         Circle()
             .fill(hintPeg.displayColor)
-            .frame(width: 20, height: 20)
+            .frame(width: 21, height: 21)
     }
 }
 
 #Preview {
-    let hintPeg = HintPeg(color: "white")
+    let hintPeg = HintPeg(color: "red")
     HintPegView(hintPeg: hintPeg)
         .background(.black)
 }

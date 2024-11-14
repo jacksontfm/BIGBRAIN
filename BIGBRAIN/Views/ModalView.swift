@@ -16,9 +16,17 @@ struct ModalView: View {
             if (game.gameWon) {
                 Text("You won!")
                     .font(.title2)
+                if game.turnCount == 1 {
+                    Text("You finished in one turn, wow! Did you cheat?")
+                } else {
+                    Text("You finished in \(game.turnCount) turns!")
+                }
+                //TODO: add functionality to save record
+                //Text("Enter your name to save your record")
             } else if (game.gameLost) {
                 Text("Game Over")
                     .font(.title)
+                Text("Better luck next time?")
             } else {
                 Text("Are you giving up?")
                     .font(.title)
@@ -33,7 +41,7 @@ struct ModalView: View {
 
 #Preview {
     let game = Game()
-    game.gameLost = false
+    game.gameLost = true
     return ModalView()
         .environment(game)
 }

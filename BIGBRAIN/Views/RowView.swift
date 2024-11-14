@@ -41,32 +41,6 @@ struct RowView: View {
                 .brightness(-0.4)
                 .padding(.leading, 20)
             Spacer()
-            HStack {
-                VStack {
-                    Image(systemName: "circle.slash")
-                        .font(.title2)
-                        .foregroundStyle(.tint)
-                        .opacity(0.2)
-                        .brightness(-0.4)
-                    Image(systemName: "circle.slash")
-                        .font(.title2)
-                        .foregroundStyle(.tint)
-                        .opacity(0.2)
-                        .brightness(-0.4)
-                }
-                VStack {
-                    Image(systemName: "circle.slash")
-                        .font(.title2)
-                        .foregroundStyle(.tint)
-                        .opacity(0.2)
-                        .brightness(-0.4)
-                    Image(systemName: "circle.slash")
-                        .font(.title2)
-                        .foregroundStyle(.tint)
-                        .opacity(0.2)
-                        .brightness(-0.4)
-                }
-            }
         }
         .padding()
         .background{

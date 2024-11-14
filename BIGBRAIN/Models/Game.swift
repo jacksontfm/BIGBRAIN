@@ -9,7 +9,6 @@ import Foundation
 
 @Observable
 class Game {
-    private let pegCount = 4
     private var colors: Colors
     
     var guess = [String]()
@@ -53,14 +52,59 @@ class Game {
         }
     }
     
+    //Compare guess against solution to generate hint. Randomize hint after generating.
+    func gatherHints(guess: [String], solution: [String]) {
+        
+        //generate an array showing which pegs are in the correct position
+        var correctPositions = [Bool]()
+        for (item, correctItem) in zip(guess, solution) {
+            let isCorrect = item == correctItem
+            correctPositions.append(isCorrect)
+        }
+        
+        //loop through correctPositions array and append red hint pegs.
+        for item in correctPositions where item == true {
+            hint.append("red")
+        }
+        
+        //this gives us the indexes of the pegs that are in incorrect positions
+        let remainingItems = correctPositions.enumerated().compactMap{ $1 == false ? $0: nil}
+        
+        //now, we will generate copies of the guess and solution arrays that only include the remainingItems. These will be used to generate the white pegs.
+        var guessRemainder = [String]()
+        var solutionRemainder = [String]()
+        for item in remainingItems {
+            guessRemainder.append(guess[item])
+            solutionRemainder.append(solution[item])
+        }
+        
+        //this recursive function loops through the guess/solution remainders to generate white pegs
+        func recursiveCheck(guess: [String], solution: [String]) {
+            var guessCopy = guess
+            var solutionCopy = solution
+            if (guessCopy.isEmpty || solutionCopy.isEmpty) {
+                return
+            } else if (solutionCopy.contains(guessCopy[0])) {
+                hint.append("white")
+                let index = solutionCopy.firstIndex(of: guessCopy[0])
+                solutionCopy.remove(at: index!)
+                guessCopy.remove(at: 0)
+                recursiveCheck(guess: guessCopy, solution: solutionCopy)
+            } else {
+                guessCopy.remove(at: 0)
+                recursiveCheck(guess: guessCopy, solution: solutionCopy)
+            }
+        }
+        recursiveCheck(guess: guessRemainder, solution: solutionRemainder)
+    }
+    
     func submit() {
         
         //Compare guess against solution to generate hint. Randomize hint after generating.
-        let tempGuess = guess
-        let tempSolution = solution
+        gatherHints(guess: guess, solution: solution)
+        hint.shuffle()
         
-        
-        //Store guess/hint based on turn number, then increment turnCount and subtract from turnsRemaining
+        //Store guess/hint based on turn number. There must be a better way to do this than five separate IF statements
         if (turnCount == 1) {
             guess1 = guess
             hint1 = hint
@@ -80,50 +124,55 @@ class Game {
         if (turnCount == 5) {
             guess5 = guess
         }
-        turnCount += 1
-        turnsRemaining -= 1
-        
-        //Check if input matches solution
-        //TODO: check if input matches solution
         
         //If guess matches solution, record the turn count as final score and display victory modal
-        //gameWon = true
-        //modalView = true
+        if (guess == solution) {
+            gameWon = true
+            modalView = true
+            return
+        }
         
-        //If lose, clear guess/hint and change message
+        //If guess does not match solution, clear guess/hint and change message. Increment turnCount by 1 and subtract 1 from turnsRemaining
         guess = [String]()
         hint = [String]()
         message = .tryAgain
         
+        turnCount += 1
+        turnsRemaining -= 1
+        
         //If no turns are left, game over
         if (turnsRemaining == 0) {
             modalView = true
-            gameLost = false
+            gameLost = true
         }
     }
     
     
     //Updates solution with a new set of pegs
     func startNewGame() {
-        //TODO: finish implementing startNewGame
         
         if !gameStart {
             gameStart = true
         }
         
         //set newSolution
+        let newSolution = colors.selectRandomColors()
+        solution = newSolution
+        print("Solution: ", solution)
         
-        //if solution is empty, append new pegs to solution
-        
-        //else assign new colors to existing solution
-        
-        //reset guesses, turn count, turns remaining, and message
+        //reset guesses, hints, turn count, turns remaining, and message
         guess = [String]()
         guess1 = [String]()
         guess2 = [String]()
         guess3 = [String]()
         guess4 = [String]()
         guess5 = [String]()
+        
+        hint = [String]()
+        hint1 = [String]()
+        hint2 = [String]()
+        hint3 = [String]()
+        hint4 = [String]()
         
         turnCount = 1
         turnsRemaining = 5

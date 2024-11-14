@@ -12,8 +12,12 @@ struct Colors {
     let colors: [String]
 
     /// - returns: `count` unique, random words from `words`, guaranteed unsorted
-    func selectRandomColors(count: Int) -> [String] {
-        var newColors = Array(colors.shuffled().prefix(count))
+    func selectRandomColors() -> [String] {
+        var newColors = [String]()
+        newColors.append(colors.randomElement()!)
+        newColors.append(colors.randomElement()!)
+        newColors.append(colors.randomElement()!)
+        newColors.append(colors.randomElement()!)
         while newColors.sorted() == newColors {
             newColors.shuffle()
         }

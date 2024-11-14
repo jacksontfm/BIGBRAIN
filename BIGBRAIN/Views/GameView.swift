@@ -35,26 +35,11 @@ struct GameView: View {
                         Spacer()
                     }
                 }
-                ZStack {
-                    RowView()
-                    Guess1View()
-                }
-                ZStack {
-                    RowView()
-                    Guess2View()
-                }
-                ZStack {
-                    RowView()
-                    Guess3View()
-                }
-                ZStack {
-                    RowView()
-                    Guess4View()
-                }
-                ZStack {
-                    RowView()
-                    Guess5View()
-                }
+                Row1View()
+                Row2View()
+                Row3View()
+                Row4View()
+                Row5View()
                 InputRowView()
                 SubmitButton()
                     .padding(.horizontal)

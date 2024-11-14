@@ -19,6 +19,6 @@ struct PegView: View {
 }
 
 #Preview {
-    let peg = Peg(color: "yellow")
+    let peg = Peg(color: "red")
     PegView(peg: peg)
 }
